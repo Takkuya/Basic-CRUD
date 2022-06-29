@@ -64,6 +64,32 @@ class RepositoryController {
       return res.status(500).json({ message: 'Internal server error' })
     }
   }
+
+  async delete(req: Request, res: Response) {
+    try {
+      const { user_id, id } = req.params
+
+      const user = User.findById(user_id)
+
+      const repository = await Repository.findOne({
+        userId: user_id,
+        _id: id,
+      })
+
+      if (!repository) {
+        return res.status(404).json({ message: 'Repository not found' })
+      }
+
+      await repository.deleteOne()
+
+      return res
+        .status(200)
+        .json({ message: 'Repositório deletado com sucesso' })
+    } catch (err) {
+      console.error(err)
+      return res.status(500).json({ message: 'Internal server error' })
+    }
+  }
 }
 
 export default new RepositoryController()

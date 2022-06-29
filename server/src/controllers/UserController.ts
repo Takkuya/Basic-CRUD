@@ -1,5 +1,6 @@
 import { Response, Request } from 'express'
 import User from '../models/user'
+import { createPasswordHash } from '../services/auth'
 
 class RepositoryController {
   async index(req: Request, res: Response) {
@@ -9,6 +10,23 @@ class RepositoryController {
     } catch (err) {
       console.error(err)
       return res.status(500).json({ error: 'Internal server error' })
+    }
+  }
+
+  //mostrar usuário específicio
+  async show(req: Request, res: Response) {
+    try {
+      const { id } = req.params
+      const user = await User.findById(id)
+
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' })
+      }
+
+      return res.json(user)
+    } catch (err) {
+      console.error(err)
+      return res.status(500).json({ message: 'Internal server error' })
     }
   }
 
@@ -24,8 +42,14 @@ class RepositoryController {
           .json({ message: `User ${username} already exist` })
       }
 
+      const encryptedPassword = await createPasswordHash(password)
+
       //criando usuário
-      const newUser = await User.create({ username, email, password })
+      const newUser = await User.create({
+        username,
+        email,
+        password: encryptedPassword,
+      })
 
       return res.status(201).json(newUser)
     } catch (err) {
