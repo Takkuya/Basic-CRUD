@@ -1,5 +1,9 @@
-function App() {
-  return <h2>Hello World</h2>
-}
+import { MainRoutes } from "./routes"
 
-export default App
+export function App() {
+  return (
+    <div className="h-full">
+      <MainRoutes />
+    </div>
+  )
+}

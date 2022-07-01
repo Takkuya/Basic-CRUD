@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-height: 100vh;
+  @apply bg-[#1B1D20] text-zinc-100;
+}
+
+#root {
+  min-height: 100vh;
+}
