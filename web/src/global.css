@@ -2,11 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.btn-primary {
+  @apply bg-custom-200 text-lg rounded-md font-semibold p-2 tracking-wider hover-transition border-2 border-custom-200 hover:transition hover:bg-transparent;
+}
+
+.input-primary {
+  @apply h-10 border-b-2 focus:outline-0 focus:border-custom-200;
+}
+
+.hover-transition {
+  @apply transition ease-in duration-200;
+}
+
+* {
+  font-family: "Roboto";
+}
+
 body {
   min-height: 100vh;
   @apply bg-[#1B1D20] text-zinc-100;
 }
 
-#root {
+.App {
   min-height: 100vh;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }

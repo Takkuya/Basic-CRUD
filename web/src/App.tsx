@@ -2,7 +2,7 @@ import { MainRoutes } from "./routes"
 
 export function App() {
   return (
-    <div className="h-full">
+    <div className="App">
       <MainRoutes />
     </div>
   )
