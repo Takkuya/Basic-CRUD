@@ -1,5 +1,6 @@
 import { Menu, Transition } from "@headlessui/react"
 import { CaretDown, CaretUp } from "phosphor-react"
+import { Link } from "react-router-dom"
 
 export function CustomDropdown() {
   return (
@@ -36,12 +37,12 @@ export function CustomDropdown() {
           >
             <Menu.Items className="origin-top-right absolute right-0 mt-4 w-44 rounded-md shadow-lg ring-1 ring-opacity-70 ring-slate-500 divide-y divide-slate-500 bg-slate-700 focus:outline-none">
               <Menu.Item>
-                <a
-                  href="#"
+                <Link
+                  to="/profile"
                   className="hover-transition group rounded-t-md flex items-center px-4 py-2 hover:bg-custom-200"
                 >
                   Editar Perfil
-                </a>
+                </Link>
               </Menu.Item>
               <Menu.Item>
                 <a

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn-primary {
-  @apply bg-custom-200 text-lg rounded-md font-semibold p-2 tracking-wider hover-transition border-2 border-custom-200 hover:transition hover:bg-transparent;
+  @apply bg-custom-200 text-lg rounded-md  p-2 tracking-wider hover-transition border-2 border-custom-200 hover:transition hover:bg-transparent;
 }
 
 .input-primary {

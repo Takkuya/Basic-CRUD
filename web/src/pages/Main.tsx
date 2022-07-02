@@ -4,7 +4,7 @@ import { Search } from "../components/Search"
 
 export function MainPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className=" flex flex-col gap-12">
       <Header />
       <Search />
       <Repositories />
