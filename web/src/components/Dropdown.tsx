@@ -47,7 +47,7 @@ export function CustomDropdown() {
               <Menu.Item>
                 <a
                   href="#"
-                  className="hover-transition group rounded-b-md flex items-center px-4 py-2 hover:bg-custom-200"
+                  className="hover-transition group rounded-b-md flex items-center px-4 py-2 text-error-100 font-bold  tracking-wider hover:bg-custom-200 hover:text-zinc-100"
                 >
                   Deletar Perfil
                 </a>

@@ -7,7 +7,7 @@
 }
 
 .input-primary {
-  @apply h-10 border-b-2 focus:outline-0 focus:border-custom-200;
+  @apply h-10 border-b-2 text-lg focus:outline-0 focus:border-custom-200;
 }
 
 .hover-transition {
