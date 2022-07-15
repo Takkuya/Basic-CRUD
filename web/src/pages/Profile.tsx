@@ -4,7 +4,6 @@ import { WarningCircle } from "phosphor-react"
 export function ProfilePage() {
   return (
     <>
-      <Header />
       <div className="my-12 flex flex-col max-w-lg w-screen mx-auto ">
         <h1 className="text-xl border-b-2 border-b-custom-200 pb-2">
           Editar Perfil
@@ -47,13 +46,13 @@ export function ProfilePage() {
               placeholder="Confirm Password"
             />
           </div>
-          <div className="flex align-center justify-between gap-8 mt-8 border-b w-80 pb-4 border-custom-200">
+          <div className="flex align-center justify-between gap-8 mt-8 border-b-2 w-80 pb-4 border-custom-200">
             <button className="bg-gray-700 border-2 border-gray-700 text-lg rounded-md p-2 tracking-wider hover-transition hover:transition hover:bg-transparent">
               Cancelar
             </button>
             <button className="btn-primary">Salvar</button>
           </div>
-          <button className="text-error-300 w-40 mt-4 border-2 border-error-300 text-lg rounded-md p-2 tracking-wider hover-transition hover:transition hover:bg-transparent">
+          <button className="text-error-100 w-40 mt-4 border-2 border-error-100 text-lg rounded-md p-2 tracking-wider hover-transition hover:transition hover:bg-transparent">
             Deletar conta
           </button>
         </div>

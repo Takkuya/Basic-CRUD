@@ -10,14 +10,14 @@ export function CustomDropdown() {
           <Menu.Button className="flex items-center">
             {open ? (
               <CaretUp
-                color="#bd0040"
+                color="#19839b"
                 weight="bold"
                 size={26}
                 className="hover-transition duration-200 hover:opacity-70"
               />
             ) : (
               <CaretDown
-                color="#bd0040"
+                color="#19839b"
                 weight="bold"
                 size={26}
                 className="hover-transition duration-200 hover:opacity-70"

@@ -5,7 +5,7 @@ module.exports = {
       colors: {
         custom: {
           100: "#C51752",
-          200: "#bd0040",
+          200: "#19839b",
         },
         background: {
           900: " #1B1D20",
