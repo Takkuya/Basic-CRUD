@@ -1,6 +1,6 @@
-import { Response, Request } from 'express'
-import User from '../models/user'
-import { createPasswordHash } from '../services/auth'
+import { Response, Request } from "express"
+import User from "../models/user"
+import { createPasswordHash } from "../services/auth"
 
 class RepositoryController {
   async index(req: Request, res: Response) {
@@ -9,7 +9,7 @@ class RepositoryController {
       return res.json(users)
     } catch (err) {
       console.error(err)
-      return res.status(500).json({ error: 'Internal server error' })
+      return res.status(500).json({ error: "Internal server error" })
     }
   }
 
@@ -20,13 +20,13 @@ class RepositoryController {
       const user = await User.findById(id)
 
       if (!user) {
-        return res.status(404).json({ message: 'User not found' })
+        return res.status(404).json({ message: "User not found" })
       }
 
       return res.json(user)
     } catch (err) {
       console.error(err)
-      return res.status(500).json({ message: 'Internal server error' })
+      return res.status(500).json({ message: "Internal server error" })
     }
   }
 
@@ -54,7 +54,32 @@ class RepositoryController {
       return res.status(201).json(newUser)
     } catch (err) {
       console.error(err)
-      return res.status(500).json({ message: 'Internal server error' })
+      return res.status(500).json({ message: "Internal server error" })
+    }
+  }
+
+  async update(req: Request, res: Response) {
+    try {
+      const { id } = req.params
+
+      const { email, username, password } = req.body
+
+      const user = await User.findById(id)
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" })
+      }
+
+      const encryptedPassword = await createPasswordHash(password)
+
+      await user.updateOne({ email, username, password: encryptedPassword })
+
+      return res
+        .status(200)
+        .json({ message: "Informações alteradas com sucesso!!!!" })
+    } catch (err) {
+      console.error(err)
+      return res.status(500).json({ message: "Internal server error" })
     }
   }
 
@@ -65,12 +90,12 @@ class RepositoryController {
       const user = await User.findById(id)
 
       if (!user) {
-        return res.status(404).json({ message: 'User not found' })
+        return res.status(404).json({ message: "User not found" })
       }
 
       await user.deleteOne()
 
-      return res.status(200).json({ message: 'User deleted' })
+      return res.status(200).json({ message: "User deleted" })
     } catch (err) {}
   }
 }

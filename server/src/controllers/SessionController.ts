@@ -1,9 +1,9 @@
-import { Request, Response } from 'express'
+import { Request, Response } from "express"
 
-import jwt from 'jsonwebtoken'
-import User from '../models/user'
-import { checkPassword } from '../services/auth'
-import authConfig from '../config/auth'
+import jwt from "jsonwebtoken"
+import User from "../models/user"
+import { checkPassword } from "../services/auth"
+import authConfig from "../config/auth"
 
 class SessionController {
   async create(req: Request, res: Response) {
@@ -13,19 +13,21 @@ class SessionController {
       const user = await User.findOne({ email })
 
       if (!user) {
-        return res.status(401).json({ message: 'User or password invalid' })
+        return res.status(401).json({ message: "User or password invalid" })
       }
 
       const checkingPassword = await checkPassword({ user, password })
       if (!checkingPassword) {
-        return res.status(401).json({ message: 'User or password invalid' })
+        return res.status(401).json({ message: "User or password invalid" })
       }
 
-      const { id } = user
+      //pegando id e username do user
+      const { id, username } = user
 
       return res.json({
         user: {
           id,
+          username,
           email,
         },
         token: jwt.sign(
@@ -40,7 +42,7 @@ class SessionController {
       })
     } catch (err) {
       console.error(err)
-      return res.status(500).json({ message: 'Internal server error' })
+      return res.status(500).json({ message: "Internal server error" })
     }
   }
 }
