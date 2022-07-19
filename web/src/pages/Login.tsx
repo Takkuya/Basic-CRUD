@@ -1,6 +1,16 @@
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../context/auth"
 
 export function LoginPage() {
+  const { signIn } = useContext(AuthContext)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleLogin = () => {
+    signIn({ email, password })
+  }
+
   return (
     <div>
       <div className="flex align-center items-center h-screen">
@@ -16,6 +26,8 @@ export function LoginPage() {
               type="text"
               name="email"
               className="input-primary bg-slate-800"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="password" className="text-xl">
               Password
@@ -24,6 +36,8 @@ export function LoginPage() {
               type="password"
               name="password"
               className="input-primary bg-slate-800"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="flex justify-center align-center text-xl">
@@ -32,7 +46,9 @@ export function LoginPage() {
               Cadastre-se
             </Link>
           </div>
-          <button className="btn-primary">Entrar</button>
+          <button className="btn-primary" onClick={handleLogin}>
+            Entrar
+          </button>
         </div>
       </div>
     </div>

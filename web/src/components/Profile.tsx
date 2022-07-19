@@ -1,6 +1,10 @@
+import { useContext } from "react"
+import { AuthContext } from "../context/auth"
 import { CustomDropdown } from "./Dropdown"
 
 export function Profile() {
+  const { user } = useContext(AuthContext)
+
   return (
     <div className="flex items-center justify-center gap-1">
       <img
@@ -10,7 +14,7 @@ export function Profile() {
       />
 
       <div className="flex items-center justify-center gap-1">
-        <h2 className="text-xl font-normal">Takkuya</h2>
+        <h2 className="text-xl font-normal">{user?.username}</h2>
         <CustomDropdown />
       </div>
     </div>

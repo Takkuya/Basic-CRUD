@@ -1,7 +1,7 @@
 export function Search() {
   return (
     <div className="max-w-lg w-full mx-auto bg-slate-700 p-4 rounded-lg">
-      <div className="flex justify-between">
+      <div className="flex items-center justify-between">
         <input
           type="text"
           placeholder="Procurar..."

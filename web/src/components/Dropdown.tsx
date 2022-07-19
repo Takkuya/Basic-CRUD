@@ -1,8 +1,12 @@
 import { Menu, Transition } from "@headlessui/react"
 import { CaretDown, CaretUp } from "phosphor-react"
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../context/auth"
 
 export function CustomDropdown() {
+  const { signOut } = useContext(AuthContext)
+
   return (
     <Menu as="div" className="relative">
       {({ open }) => (
@@ -44,10 +48,19 @@ export function CustomDropdown() {
                   Editar Perfil
                 </Link>
               </Menu.Item>
+
+              <Menu.Item>
+                <button
+                  onClick={signOut}
+                  className="hover-transition group flex items-center px-4 py-2 hover:bg-custom-200 w-full"
+                >
+                  Logout
+                </button>
+              </Menu.Item>
               <Menu.Item>
                 <a
                   href="#"
-                  className="hover-transition group rounded-b-md flex items-center px-4 py-2 text-error-100 font-bold  tracking-wider hover:bg-custom-200 hover:text-zinc-100"
+                  className="hover-transition group rounded-b-md flex items-center px-4 py-2 text-error-100 font-semibold  tracking-wider hover:bg-custom-200 hover:text-zinc-100"
                 >
                   Deletar Perfil
                 </a>

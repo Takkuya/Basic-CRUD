@@ -1,7 +1,10 @@
-import { Header } from "../components/Header"
 import { WarningCircle } from "phosphor-react"
+import { useContext } from "react"
+import { AuthContext } from "../context/auth"
 
 export function ProfilePage() {
+  const { user } = useContext(AuthContext)
+
   return (
     <>
       <div className="my-12 flex flex-col max-w-lg w-screen mx-auto ">
@@ -28,11 +31,13 @@ export function ProfilePage() {
             <input
               className="input-primary bg-background-900"
               type="text"
+              value={user?.username}
               placeholder="Username"
             />
             <input
               className="input-primary bg-background-900"
               type="email"
+              value={user?.email}
               placeholder="Email"
             />
             <input
