@@ -45,8 +45,6 @@ class RepositoryController {
       const url = `/${user.username}/${validateRepositoryName}`
 
       if (repository) {
-        console.log(repository)
-        console.log(url)
         return res
           .status(422)
           .json({ message: `Repository ${repositoryName} already exist.` })
@@ -71,7 +69,11 @@ class RepositoryController {
 
       const { repositoryName } = req.body
 
-      const user = User.findById(user_id)
+      const user = await User.findById(user_id)
+
+      const validateRepositoryName = repositoryName.replace(/\s/g, "")
+
+      const url = `/${user.username}/${validateRepositoryName}`
 
       const repository = await Repository.findOne({
         userId: user_id,
@@ -82,11 +84,11 @@ class RepositoryController {
         return res.status(404).json({ message: "Repository not found" })
       }
 
-      await repository.updateOne({ repositoryName })
+      await repository.updateOne({ repositoryName, url })
 
       return res
         .status(200)
-        .json({ message: "Infomações alteradas com sucesso!!!!" })
+        .json({ message: "Infomações alteradas com sucesso!!!!", repository })
     } catch (err) {
       console.error(err)
       return res.status(500).json({ message: "Internal server error" })

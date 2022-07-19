@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose"
 
 const repositorySchema = new mongoose.Schema(
   {
@@ -9,6 +9,7 @@ const repositorySchema = new mongoose.Schema(
     repositoryName: {
       type: String,
       required: true,
+      unique: true,
     },
     url: {
       type: String,
@@ -21,6 +22,6 @@ const repositorySchema = new mongoose.Schema(
   }
 )
 
-const repository = mongoose.model('repository', repositorySchema)
+const repository = mongoose.model("repository", repositorySchema)
 
 export default repository
